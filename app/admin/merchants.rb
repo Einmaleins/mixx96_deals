@@ -24,7 +24,7 @@ ActiveAdmin.register Merchant do
 		f.inputs "Details" do
 			f.input :name
 			f.input :homepage
-			f.input :logo, :as => :file
+			f.input :logo, :as => :file, :hint => "Must be 360 pixels wide x 268 pixels high or 4 x 3"
 			#f.input :logo_cache, :as => :hidden
 			f.input :categories, :as => :check_boxes
 		end

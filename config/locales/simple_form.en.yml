@@ -9,18 +9,20 @@ en:
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: 'Please review the problems below:'
+      #age_verify: 'You must verify that you are at least 13 years old.'
     # Labels and hints examples
-    # labels:
-    #   defaults:
+    #labels:
+    # defaults:
     #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
+        # user:
+        #     new:
+        #         age_verify: 'I certify that I am at least 13 years of age'
     #     edit:
     #       email: 'E-mail.'
     # hints:
-    #   defaults:
+        # defaults:
+            
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
 

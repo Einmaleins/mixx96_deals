@@ -8,7 +8,7 @@
       <%= f.input :address, :required => :true %>
       <%= f.input :address2 %>
       <%= f.input :city, :required => :true %>
-      <%= f.input :state, :required => :true %>
+      <%= f.input :state, :as => :select, :collection => us_states, :required => :true, :selected => "WA" %>
       <%= f.input :zip, :required => :true %>
     </fieldset>
     <fieldset>

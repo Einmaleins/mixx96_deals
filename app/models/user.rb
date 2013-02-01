@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :email_confirmation, :password, :password_confirmation, :remember_me
-  
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :age_verify
   #relationship
-  has_many :orders
+  has_many :orders  
 
+  validates_acceptance_of :age_verify
+  validates_acceptance_of :eula, :message => "You must be at least 13"
 
   def password_required?
    false

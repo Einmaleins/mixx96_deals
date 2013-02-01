@@ -1,18 +1,17 @@
-
 <h1 class="page-header">Merchants</h1>
 
 <table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Merchant</th>
-      <th>Website</th>
-      <th>Directions</th>
+  <thead class="table-head">
+    <tr class="row">
+      <th class="column">Merchant</th>
+      <th class="column">Website</th>
+      <th class="column">Directions</th>
     </tr>
   </thead>
   <tbody>
     <% @merchants.each do |merchant| %>
-      <tr>
-        <td>
+      <tr class="row">
+        <td class="column" data-label="">
           <strong><%= merchant.name %></strong><br />
           <address>
             <%= "#{merchant.address} <br /> #{merchant.city}, #{merchant.state} #{merchant.zip} <br/>".html_safe %>
@@ -20,8 +19,8 @@
             <%= mail_to merchant.email %>
           </address>
         </td>
-        <td><%= link_to "#{merchant.homepage}", "http://#{merchant.homepage}" %></td>
-        <td><%= link_to "Map & Directions", merchant.map_link, class: 'btn', target: '_blank' %></td>
+        <td class="column" data-label=""><%= link_to "#{merchant.homepage}", "#{merchant.homepage}" %></td>
+        <td class="column" data-label=""><%= link_to "Map & Directions", merchant.map_link, class: 'btn', target: '_blank' %></td>
       </tr>
     <% end %>
   </tbody>

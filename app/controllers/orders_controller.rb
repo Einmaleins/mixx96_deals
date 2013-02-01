@@ -16,11 +16,12 @@ class OrdersController < InheritedResources::Base
 		if @order.save
 			if @order.purchase
 				@order.complete!
-				OrderMailer.order_confirmation(current_user, @order).deliver
+        OrderMailer.order_confirmation(current_user, @order).deliver
 				redirect_to success_deal_order_path(@order.deal,@order)
 			else
 				redirect_to failure_deal_order_path(@order.deal,@order)
 			end
+			# end
 		else
 			render 'new'
 		end

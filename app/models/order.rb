@@ -2,12 +2,13 @@ class Order < ActiveRecord::Base
 	#relationships
 	belongs_to :deal
 	belongs_to :user
+  has_one :offer, :through => :deal
 	has_many :transactions, :class_name => "OrderTransaction", :dependent => :destroy
   has_one :merchant, :through => :deal
 
 	#mass-assigment
   attr_accessible :address, :address2, :city, :state, :zip, :card_number, :card_verification, 
-  :first_name, :last_name, :card_type, :card_expires_on #(1i), card_expires_on(2i), card_expires_on(3i)
+  :first_name, :last_name, :card_type, :card_expires_on, :deal_id, :completed, :number #(1i), card_expires_on(2i), card_expires_on(3i)
 
   #virtual things
   attr_accessor :card_number, :card_verification
@@ -24,6 +25,7 @@ class Order < ActiveRecord::Base
   scope :completed, lambda { where :completed => true }
   scope :incomplete, lambda { where :completed => false }
   scope :all, lambda { all }
+  scope :recent, limit(10)
   
   #methods
   def purchase
@@ -37,6 +39,10 @@ class Order < ActiveRecord::Base
   end
 
   def complete!
+    if self.deal.quantity != nil && self.deal.quantity > 0
+			self.deal.decrement!(:quantity)
+      logger.debug "****************** DEAL QUANTITY DECREASED BY 1 ****************"
+    end
   	toggle!(:completed)
   	logger.debug "****************** ORDER MARKED COMPLETED ****************"
   end

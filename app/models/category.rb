@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
 	validates :name, :presence => true, :uniqueness => true
 	
 	#mass-assignment
-	attr_accessible :name
+	attr_accessible :name, :sort
 
 	#SLUGS
 	extend FriendlyId

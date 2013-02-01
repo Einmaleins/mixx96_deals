@@ -59,7 +59,7 @@ Mixx96Deals::Application.configure do
   }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.default_url_options = { :host => 'mixxmall.mixx96.com' }
+  config.action_mailer.default_url_options = { :host => 'deals.mixx96.com' }
 
   # Enable threaded mode
   # config.threadsafe!

@@ -27,8 +27,8 @@ ActiveAdmin.register Deal do
 	form do |f|
 		f.inputs do
 			f.input :merchant
-			f.input :image, :as => :file, :hint => (f.template.image_tag(f.object.image.url) if !f.object.image.url.blank?)
-  		f.input :image_cache, :as => :hidden 
+			f.input :image, :as => :file, :hint => (f.template.image_tag(f.object.image.url) if !f.object.image.url.blank?), :hint => "Must be 360 pixels wide x 270 pixels high or 4 x 3"
+  			f.input :image_cache, :as => :hidden 
 			f.input :featured
 			f.input :priority, :as => :string
 			f.input :name
@@ -37,6 +37,7 @@ ActiveAdmin.register Deal do
 			f.input :normal_price, :as => :string
 			f.input :price, :as => :string
 			f.input :quantity, :as => :string
+			f.input :start_date, :as => :date
 			f.input :end_date, :as => :date
 			f.input :expiration_date, :as => :date
 			f.input :categories, :as => :check_boxes

@@ -2,35 +2,41 @@
 
 	<ul class="thumbnails">
 	<% @offers.each do |offer| %>
+	<% unless offer.quantity == 0 %>
 		<li class="span3">
 				<div class="thumbnail <%= offer_class(offer) %>">
-					<div class="offer-type <%= offer_class(offer) %>">
+					<% if offer.featured == true %>
+					<div class="offer-type <%= offer_class(offer) %>">Featured
+						<% else %>
+						<div class="offer-type <%= offer_class(offer) %>">
+						<% end %>
 						<i class="<%= offer_icon(offer) %>"></i>
 						<%= offer.type.humanize %>
 					</div>
 	      	<%= image_tag offer.image.url() %>
 	      	<h3><%= offer.name %></h3>
 	      	<div class="tagline">
-	      		<%= offer.tagline %>
+	      		<%= offer.tagline.truncate(100, :omission => "... (continued)") %>
 	      	</div>
 	      
-					<%= link_to 'Find out more.', 
+					<%= link_to 'Find out more', 
 							deal_path(offer), 
 							class: 'btn btn-primary' if offer.kind_of? Deal %>
 	     
-	      	<%= link_to 'Find out more.', 
+	      	<%= link_to 'Find out more', 
 	      			coupon_path(offer), 
 	      			class: 'btn btn-primary' if offer.kind_of? Coupon %>
 
-	      	<%= link_to 'Find out more.', 
+	      	<%= link_to 'Find out more', 
 	      			ad_path(offer), 
 	      			class: 'btn btn-primary' if offer.kind_of? Ad %>
 
-	      	<%= link_to 'Find out more.', 
+	      	<%= link_to 'Find out more', 
 	      			event_path(offer), 
 	      			class: 'btn btn-primary' if offer.kind_of? Event %>
 
 	    	</div><!-- .thumbnail -->
 	   </li><!-- span3 -->
+	<% end %>
 	<% end %>
 	</ul><!-- .thumbnails -->

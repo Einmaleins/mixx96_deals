@@ -20,7 +20,6 @@
   <div class="span4">
     
     <%= simple_format @coupon.description %>
-    <p><strong>PAID VALUE DOES NOT EXPIRE.</strong></p>
     <p><strong>PROMOTIONAL VALUE EXPIRES ON <%= @coupon.expiration_date.strftime("%b %d, %Y").upcase   %>.</strong></p>
   </div>
 
@@ -40,6 +39,12 @@
         <phone><%= @coupon.merchant.phone_number %></phone>
       <% end %>
       <email><%= @coupon.merchant.email %></email>
+    </div>
+    <div class="span5" id="socialSharing">
+      <span class='st_sharethis_hcount' displayText='ShareThis'></span>
+      <span class='st_facebook_hcount' displayText='Facebook'></span>
+      <span class='st_twitter_hcount' displayText='Tweet'></span>
+      <span class='st_email_hcount' displayText='Email'></span>
     </div>
   </div>
 </div>

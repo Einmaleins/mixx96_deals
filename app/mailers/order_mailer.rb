@@ -4,7 +4,7 @@ class OrderMailer < ActionMailer::Base
   def order_confirmation(user, order)
     @user = user
     @order = order
-    mail(:to => user.email, :subject => "MixxMall Order Confirmation")
+    mail(:to => user.email, :bcc => 'mixxmall@mixx96.com', :subject => "MixxMall Order Confirmation")
   end
 
   def deal_feedback(feedback)

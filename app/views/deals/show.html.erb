@@ -7,12 +7,13 @@
 		
 		<h1><%= @deal.name %></h1>
 		<p><%= @deal.tagline %></p>
-
-		<div class="btn-group">
-  		<button class="btn"><%= deal_savings(@deal) %></button>
-  		<button class="btn"><%= @deal.quantity %></button>
-  		<button class="btn"><%= number_to_currency @deal.price %></button>
-  		<%= link_to 'Buy', new_deal_order_path(@deal), class: 'btn btn-success' %>
+		<div class="btn-group" id="purchase-buttons">
+      <button class="btn">You Save <%= deal_savings(@deal) %></button>
+      <% unless @deal.quantity.blank? %>
+	  		<button class="btn"><%= pluralize(@deal.quantity, 'deal') %> left.</button>
+      <% end %>  
+      <button class="btn">Your Cost <%= number_to_currency @deal.price %></button>
+	  		<%= link_to 'Buy', new_deal_order_path(@deal), class: 'btn btn-success' %>
 		</div>
 	</div><!-- span5 -->
 </div><!-- row -->
@@ -20,11 +21,11 @@
 <div class="row">
 	
 	<div class="span4">
-		
+		<h4 class="deal-header4">Things you need to know about this Deal:</h4>
 		<%= simple_format @deal.description %>
-		<p><strong>PAID VALUE DOES NOT EXPIRE.</strong></p>
-		<p><strong>PROMOTIONAL VALUE EXPIRES ON <%= @deal.expiration_date.strftime("%b %d, %Y").upcase	 %>.</strong></p>
-		
+		<h6>PAID VALUE DOES NOT EXPIRE.<br />PROMOTIONAL VALUE EXPIRES ON <%= @deal.expiration_date.strftime("%b %d, %Y").upcase %>. <%= link_to '*', 'http://mixx96.com/component/content/article/152' %></h6>
+		<h6 class="header-conditons">General Conditions:</h6>
+		<p class="general-conditions">This certificate cannot be combined with any other offer, promotion or coupon.<br />Tax and gratuity, where applicable, are not included.<br />Where it says  PROMOTIONAL VALUE EXPIRES: (DATE) it means that the extra value on the  certificate expires on the date shown. After that date, the value of the coupon or deal reverts to only the amount you paid. The "PAID VALUE" DOES NOT EXPIRE.  (Example: You bought a box of donuts (cost $12) for $5.  You can take the coupon to the donut shop and get $12 of donuts until the expiration date.  After the  expiration date, you'll only get $5 worth of dounts.)<br />If for some reason the wonderful donut shop closes , we will provide refunds upon request only where the merchant has gone out of business before the promotional period ends.</p>
 	</div>
 
 	<div class="span4">
@@ -46,7 +47,14 @@
 			<%# unless @deal.merchant.twitter.blank? %>
 				<%#= @deal.merchant.twitter %>
 			<%# end %>
+			<br />
+			<map><%= link_to "Map & Directions", @deal.merchant.map_link, class: 'btn', target: '_blank' %></map>
 		</div>
-		
+		<div class="span5" id="socialSharing">
+		    <span class='st_sharethis_hcount' displayText='ShareThis'></span>
+		    <span class='st_facebook_hcount' displayText='Facebook'></span>
+		    <span class='st_twitter_hcount' displayText='Tweet'></span>
+		    <span class='st_email_hcount' displayText='Email'></span>
+		</div>
 	</div>
 </div>

@@ -14,12 +14,22 @@ ActiveAdmin::Dashboards.build do
         end
       end
     end
-    
-    section "Recent Orders", :priority => 1 do
-    	div do 
-    		p "There will be recent orders here after I build it."
-    	end
-    end
+
+    section "Recent Orders", :priority => 1 do  
+    table_for Order.recent.collect do |order| 
+      column("Order") {|order|link_to(order.number, admin_order_path(order)) } 
+      column("Customer") {|order|"#{order.first_name} #{order.last_name}"}
+      column ("Deal") {|order| "#{order.deal.name}"}
+      #column ("Amount") {|order| order.transactions.amount}
+    end 
+  end  
+      # column do
+      #   panel "Recent Customers" do
+      #     table_for User.order('id desc').limit(10).each do |customer|
+      #       column(:email)    {|customer| link_to(customer.email, admin_customer_path(customer)) }
+      #     end
+      #   end
+      # end
   
   # == Render Partial Section
   # The block is rendered within the context of the view, so you can

@@ -7,9 +7,9 @@ set :rvm_type, :system
 
 # main details
 set :application, "MIXX96 Deals"
-role :web, "66.7.104.146"
-role :app, "66.7.104.146"
-role :db,  "66.7.104.146", :primary => true
+role :web, "deals.mixx96.com"
+role :app, "deals.mixx96.com"
+role :db,  "deals.mixx96.com", :primary => true
 
 # server details
 default_run_options[:pty] = true
