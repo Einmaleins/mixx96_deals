@@ -9,7 +9,7 @@
     <p><%= @coupon.tagline %></p>
 
     <div class="btn-group">
-      <%= link_to 'Print Coupon', @coupon.printable_file.url, class: 'btn btn-success' if !@coupon.printable_file.blank? %>
+      <%= link_to 'Print a Coupon', @coupon.printable_file.url, :target => "_blank", class: 'btn btn-success' if !@coupon.printable_file.blank? %>
     </div>
   
   </div><!-- span5 -->
