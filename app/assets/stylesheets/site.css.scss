@@ -259,8 +259,12 @@ span.stButton {
   }
 
   #reset-password.form-actions input.btn {
-  width: 262px;
-}
+    width: 262px;
+  }
+
+  div#print-coupon-button.btn-group > .btn {
+    border-radius: 4px;
+  }
 }
 
 @media only screen and (max-width : 1200px) {
