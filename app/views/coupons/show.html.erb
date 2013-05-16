@@ -9,7 +9,7 @@
     <p><%= @coupon.tagline %></p>
 
     <div class="btn-group" id="print-coupon-button">
-      <%= link_to 'Print Coupon', @coupon.printable_file.url, :target => "_blank", class: 'btn btn-success' if !@coupon.printable_file.blank? %>
+      <%= link_to 'Get Coupon', @coupon.printable_file.url, :target => "_blank", class: 'btn btn-success' if !@coupon.printable_file.blank? %>
     </div>
   
   </div><!-- span5 -->
@@ -21,6 +21,7 @@
     
     <%= simple_format @coupon.description %>
     <p><strong>PROMOTIONAL VALUE EXPIRES ON <%= @coupon.expiration_date.strftime("%b %d, %Y").upcase   %>.</strong></p>
+    <p>Questions? Call 360-943-9937</p>
   </div>
   <div class="span4">
     
