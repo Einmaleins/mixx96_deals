@@ -2,7 +2,7 @@
 
 	<ul class="thumbnails">
 	<% @offers.each do |offer| %>
-	<% unless offer.quantity == 0 %>
+	<% unless offer.quantity == 0 || offer.expiration_date <= Date.today %>
 		<li class="span3">
 				<div class="thumbnail <%= offer_class(offer) %>">
 					<% if offer.featured == true %>
