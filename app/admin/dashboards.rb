@@ -23,13 +23,12 @@ ActiveAdmin::Dashboards.build do
       #column ("Amount") {|order| order.transactions.amount}
     end 
   end  
-      # column do
-      #   panel "Recent Customers" do
-      #     table_for User.order('id desc').limit(10).each do |customer|
-      #       column(:email)    {|customer| link_to(customer.email, admin_customer_path(customer)) }
-      #     end
-      #   end
-      # end
+  
+  # section "Recent Customers" do
+  #     table_for User.order('id desc').limit(10).each do |customer|
+  #       column(:email) {|customer| link_to(customer.email, admin_customer_path(customer)) }
+  #     end
+  # end
   
   # == Render Partial Section
   # The block is rendered within the context of the view, so you can
