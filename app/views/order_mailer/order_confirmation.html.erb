@@ -8,7 +8,7 @@
     <h1>Thank you for your order!</h1>
     <h2>Order <%= "##{@order.number}" %> Confirmation.</h2>
     <h3>This is your certificate, treat it like cash.</h3>
-    <p>For questions about your Mixx Mall order, call (insert name here) at (360) 943-0961 Mon - Fri 9am - 5pm.</p>
+    <p>For questions about your Mixx Mall order, call the Business Office at (360) 943-0961 Mon - Fri 9am - 5pm.</p>
     <h3>Your credit card has been charged <%= number_to_currency(@order.transactions.last.amount/100) %> on <%= @order.created_at.strftime("%b %d, %Y") %>. This will appear on your statement as "3 Cities, Inc.".</h3>
 
     <h1><%= image_tag @order.deal.image.url %></h1>
