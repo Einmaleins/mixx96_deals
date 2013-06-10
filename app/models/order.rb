@@ -1,12 +1,12 @@
 class Order < ActiveRecord::Base
-	#relationships
-	belongs_to :deal
-	belongs_to :user
+  #relationships
+  belongs_to :deal
+  belongs_to :user
   has_one :offer, :through => :deal
-	has_many :transactions, :class_name => "OrderTransaction", :dependent => :destroy
+  has_many :transactions, :class_name => "OrderTransaction", :dependent => :destroy
   has_one :merchant, :through => :deal
 
-	#mass-assigment
+  #mass-assigment
   attr_accessible :address, :address2, :city, :state, :zip, :card_number, :card_verification, 
   :first_name, :last_name, :card_type, :card_expires_on, :deal_id, :completed, :number #(1i), card_expires_on(2i), card_expires_on(3i)
 
@@ -40,11 +40,11 @@ class Order < ActiveRecord::Base
 
   def complete!
     if self.deal.quantity != nil && self.deal.quantity > 0
-			self.deal.decrement!(:quantity)
+      self.deal.decrement!(:quantity)
       logger.debug "****************** DEAL QUANTITY DECREASED BY 1 ****************"
     end
-  	toggle!(:completed)
-  	logger.debug "****************** ORDER MARKED COMPLETED ****************"
+    toggle!(:completed)
+    logger.debug "****************** ORDER MARKED COMPLETED ****************"
   end
 
   private
@@ -66,16 +66,16 @@ class Order < ActiveRecord::Base
   def validate_card
     unless credit_card.valid?
       credit_card.errors.each do |k,v|
-      	logger.debug "*" * 50
-      	logger.debug "#{k} => #{v}"
-      	logger.debug "*" * 50
-      	case k
-      		when  "year" || "month"
-      			errors.add(:card_expires_on, v.join)
-        	when "number"
-        		errors.add(:card_number, v.join)
-        	when "brand"
-        		errors.add(:card_type, v.join)
+        logger.debug "*" * 50
+        logger.debug "#{k} => #{v}"
+        logger.debug "*" * 50
+        case k
+          when  "year" || "month"
+            errors.add(:card_expires_on, v.join)
+          when "number"
+            errors.add(:card_number, v.join)
+          when "brand"
+            errors.add(:card_type, v.join)
         end
       end
     end
